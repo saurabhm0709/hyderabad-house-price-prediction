@@ -1,0 +1,12 @@
+# Normalise line endings
+* text=auto eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.ipynb text eol=lf
+
+# Binary assets
+*.pdf binary
+*.png binary
+*.jpg binary
+*.joblib binary
+*.db binary

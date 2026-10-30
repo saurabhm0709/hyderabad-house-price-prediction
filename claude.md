@@ -1,0 +1,4 @@
+I am working on a hyderabad asking price prediction project. I had scrapped the data from magicbricks and it is in a SQLite database.The data was scrapped accoring to the price range...like 1 lakh to 50 lakh, then 50 lakh to 80 lakh, then 80 lakh to 1 crore..etc.. The database name is listings_master.db. It contains some tables. The main tables are listings and locality_ratings. The listing table consist of property listings and locality tables consists of unique locaity related things. The listings table consists of a column called locality id. We will apply left left join to merge lisiting table with the locality table.
+
+My goal is to make ML model that will predict the asking price of the hyderabad house properties.
+You have to guid me how to do this project.

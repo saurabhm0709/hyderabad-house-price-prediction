@@ -1,0 +1,202 @@
+{
+  "rows": {
+    "train": 15472,
+    "test": 3868
+  },
+  "features": {
+    "numeric": [
+      "covered_area",
+      "bedrooms",
+      "bathrooms",
+      "balconies",
+      "floor",
+      "total_floors",
+      "avg_price_sqft",
+      "avg_price_lmt",
+      "locality_rank",
+      "growth_quarterly_pct",
+      "rating_overall",
+      "review_count",
+      "latitude",
+      "longitude"
+    ],
+    "categorical": [
+      "property_type",
+      "transaction_type",
+      "furnishing",
+      "posted_by",
+      "prime_location",
+      "age_of_property",
+      "possession_simple",
+      "facing_clean",
+      "coords_are_locality"
+    ],
+    "count": 23,
+    "after_preprocessing": 67
+  },
+  "target": "log1p(price), scored back in rupees",
+  "cross_validation": {
+    "Linear Regression": {
+      "MAE_lakh": 76.722,
+      "RMSE_lakh": 273.562,
+      "R2_log": 0.633,
+      "MedAPE_%": 25.336,
+      "fit_seconds": 1.8
+    },
+    "Ridge Regression": {
+      "MAE_lakh": 76.722,
+      "RMSE_lakh": 273.641,
+      "R2_log": 0.633,
+      "MedAPE_%": 25.338,
+      "fit_seconds": 1.6
+    },
+    "Random Forest": {
+      "MAE_lakh": 52.82,
+      "RMSE_lakh": 131.448,
+      "R2_log": 0.773,
+      "MedAPE_%": 16.357,
+      "fit_seconds": 52.8
+    },
+    "Gradient Boosting": {
+      "MAE_lakh": 56.455,
+      "RMSE_lakh": 135.968,
+      "R2_log": 0.758,
+      "MedAPE_%": 18.538,
+      "fit_seconds": 34.8
+    },
+    "Baseline (median)": {
+      "MAE_lakh": 108.05822052675802,
+      "RMSE_lakh": 216.37805448907676,
+      "R2_log": -0.00033181375132351754,
+      "MedAPE_%": 40.014946119787815,
+      "fit_seconds": 0.0
+    }
+  },
+  "locality_experiment": {
+    "locality numbers only (current) | Ridge": {
+      "R2_log": 0.6329340872395076,
+      "MAE_lakh": 76.72233861843807
+    },
+    "locality numbers only (current) | Random Forest": {
+      "R2_log": 0.7721802678020422,
+      "MAE_lakh": 52.869570601926895
+    },
+    "locality numbers + one-hot | Ridge": {
+      "R2_log": 0.6464741382786894,
+      "MAE_lakh": 74.59377439025212
+    },
+    "locality numbers + one-hot | Random Forest": {
+      "R2_log": 0.7720410731190112,
+      "MAE_lakh": 52.922726664953046
+    },
+    "one-hot only, no locality numbers | Ridge": {
+      "R2_log": 0.6295863306521778,
+      "MAE_lakh": 77.50945997270244
+    },
+    "one-hot only, no locality numbers | Random Forest": {
+      "R2_log": 0.7645754624377689,
+      "MAE_lakh": 54.500743087603645
+    }
+  },
+  "chosen_hyperparameters": {
+    "Ridge Regression": {
+      "alpha": "10.0"
+    },
+    "Random Forest": {
+      "max_depth": "None",
+      "min_samples_leaf": "2"
+    },
+    "Gradient Boosting": {
+      "learning_rate": "0.1",
+      "max_depth": "5",
+      "n_estimators": "600"
+    },
+    "Linear Regression": {
+      "(nothing to tune)": ""
+    }
+  },
+  "test_results": {
+    "Linear Regression": {
+      "MAE_lakh": 77.008,
+      "RMSE_lakh": 214.955,
+      "R2_log": 0.615,
+      "MedAPE_%": 24.483
+    },
+    "Ridge Regression": {
+      "MAE_lakh": 77.039,
+      "RMSE_lakh": 215.32,
+      "R2_log": 0.616,
+      "MedAPE_%": 24.518
+    },
+    "Random Forest": {
+      "MAE_lakh": 54.26,
+      "RMSE_lakh": 142.964,
+      "R2_log": 0.767,
+      "MedAPE_%": 15.764
+    },
+    "Gradient Boosting": {
+      "MAE_lakh": 53.353,
+      "RMSE_lakh": 140.06,
+      "R2_log": 0.776,
+      "MedAPE_%": 16.327
+    },
+    "Baseline (median)": {
+      "MAE_lakh": 107.574,
+      "RMSE_lakh": 219.762,
+      "R2_log": -0.0,
+      "MedAPE_%": 40.0
+    }
+  },
+  "best_model": "Gradient Boosting",
+  "within_10_pct": 33.76421923474664,
+  "within_25_pct": 66.44260599793175,
+  "error_by_band": {
+    "under 50L": {
+      "listings": 289,
+      "median_actual_lakh": 40.0,
+      "MAE_lakh": 17.0,
+      "MedAPE_pct": 26.2
+    },
+    "50L-1Cr": {
+      "listings": 783,
+      "median_actual_lakh": 70.0,
+      "MAE_lakh": 18.8,
+      "MedAPE_pct": 16.0
+    },
+    "1-2Cr": {
+      "listings": 1738,
+      "median_actual_lakh": 150.0,
+      "MAE_lakh": 30.0,
+      "MedAPE_pct": 13.7
+    },
+    "2-5Cr": {
+      "listings": 848,
+      "median_actual_lakh": 295.0,
+      "MAE_lakh": 76.1,
+      "MedAPE_pct": 18.2
+    },
+    "above 5Cr": {
+      "listings": 210,
+      "median_actual_lakh": 700.0,
+      "MAE_lakh": 333.3,
+      "MedAPE_pct": 32.7
+    }
+  },
+  "top_features": {
+    "covered_area": 0.5847,
+    "bathrooms": 0.0813,
+    "bedrooms": 0.059,
+    "avg_price_sqft": 0.0473,
+    "longitude": 0.023,
+    "property_type_Residential House": 0.0207,
+    "property_type_Villa": 0.0202,
+    "latitude": 0.02,
+    "total_floors": 0.0192,
+    "locality_rank": 0.0143,
+    "property_type_Apartment": 0.0118,
+    "possession_simple_Unknown": 0.0105,
+    "missingindicator_covered_area": 0.0092,
+    "avg_price_lmt": 0.0076,
+    "review_count": 0.0053
+  }
+}
